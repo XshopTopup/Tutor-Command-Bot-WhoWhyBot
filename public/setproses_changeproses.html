@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>WHOWHYBOT - Panduan Setproses & Changeproses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette Warna Code Editor (Inspired by One Dark / Dracula) */
+            --bg-body: #1e1e1e;
+            --bg-container: #252526;
+            --text-main: #d4d4d4;
+            --accent-blue: #61afef;
+            --accent-purple: #c678dd;
+            --accent-green: #98c379;
+            --accent-orange: #d19a66;
+            --accent-red: #e06c75;
+            --border-color: #3e3e42;
+            --code-bg: #101010;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Consolas', monospace; /* Font koding */
+            background-color: var(--bg-body);
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px; /* Efek Grid */
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: #007acc; /* Warna status bar VS Code */
+            padding: 12px 0;
+            text-align: center;
+            border-bottom: 2px solid #005a9e;
+            position: relative;
+        }
+        
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        
+        header::before {
+            content: "root@server:~#"; /* Aksen terminal */
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            font-size: 0.8em;
+            opacity: 0.7;
+            display: none; /* Hidden on mobile */
+        }
+        @media(min-width: 768px) { header::before { display: block; } }
+
+        /* ===== CONTENT ===== */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--bg-container);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* Hiasan titik window mac os */
+        .container::before {
+            content: "● ● ●";
+            color: #5c5c5c;
+            font-size: 14px;
+            letter-spacing: 4px;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+        }
+
+        h1 {
+            color: var(--accent-blue);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 10px;
+            font-size: 1.8em;
+        }
+        
+        h2 {
+            color: var(--accent-purple);
+            margin-top: 30px;
+            font-size: 1.4em;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #abb2bf;
+        }
+
+        /* Code Styling */
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-orange);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border-left: 3px solid var(--accent-blue);
+            color: #e5e5e5;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        pre code {
+            background: transparent;
+            color: inherit;
+            border: none;
+            padding: 0;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            color: #abb2bf;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        strong {
+            color: #ffffff;
+        }
+
+        /* Image Box */
+        .img-box {
+            margin: 30px 0;
+            text-align: center;
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .img-box img {
+            max-width: 100%;
+            border-radius: 4px;
+            border: 1px solid #444;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        
+        .img-box img:hover {
+            opacity: 1;
+        }
+        
+        .img-box p {
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Alerts */
+        .note {
+            background: rgba(97, 175, 239, 0.1); /* Blue transparent */
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+            color: #dcdcdc;
+        }
+        
+        .warning {
+            background: rgba(224, 108, 117, 0.1); /* Red transparent */
+            border-left: 4px solid var(--accent-red);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+            color: #ffcccc;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.85em;
+            color: #5c6370;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        /* Selection color */
+        ::selection {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/">WHOWHYBOT_</a>
+</header>
+
+<div class="container">
+    <h1>Panduan Command <code>!setproses</code>, <code>!changeproses</code>, dan <code>!delsetproses</code></h1>
+
+    <p>
+        Command pada halaman ini digunakan untuk <strong>mengatur, mengubah, dan mereset
+        template pesan status PROSES</strong> pada sistem pesanan bot WHOWHYBOT.
+        Template ini biasanya digunakan pada sistem order, jasa, atau transaksi.
+    </p>
+
+    <!-- ================= SETPROSES ================= -->
+    <h2>// Command <code>!setproses</code></h2>
+
+    <p>
+        Command <strong>!setproses</strong> digunakan untuk
+        <strong>membuat dan menyimpan template pesan status PROSES</strong>.
+        Template ini akan digunakan setiap kali pesanan berada dalam tahap diproses.
+    </p>
+
+    <h3>> Format Command</h3>
+    <pre><code>!setproses &lt;text&gt;</code></pre>
+
+    <h3>> Contoh Penggunaan</h3>
+    <pre><code>!setproses
+Pesanan: @pesanan
+Dari: @nama
+Tanggal: @tanggal
+Jam: @jam</code></pre>
+
+    <h3>> Placeholder yang Tersedia</h3>
+    <ul>
+        <li><code>@tanggal</code> – Menampilkan tanggal saat ini</li>
+        <li><code>@jam</code> – Menampilkan jam saat ini</li>
+        <li><code>@nama</code> – Menandai pengguna yang dibalas</li>
+        <li><code>@pesanan</code> – Menampilkan ulang pesan yang dibalas</li>
+    </ul>
+
+    <div class="note">
+        <strong>[INFO]:</strong> Disarankan menggunakan command <code>!setproses</code> dengan cara
+        <strong>reply ke pesan pesanan</strong> agar placeholder
+        <code>@nama</code> dan <code>@pesanan</code> berfungsi dengan benar.
+    </div>
+
+    <h3>> Cara Kerja Bot</h3>
+    <ol>
+        <li>Bot membaca teks template dari command</li>
+        <li>Template PROSES disimpan ke database</li>
+        <li>Placeholder diganti secara otomatis saat pesan dikirim</li>
+        <li>Template digunakan setiap status pesanan PROSES</li>
+    </ol>
+
+    <!-- ================= CHANGEPROSES ================= -->
+    <h2>// Command <code>!changeproses</code></h2>
+
+    <p>
+        Command <strong>!changeproses</strong> digunakan untuk
+        <strong>mengubah template PROSES yang sudah dibuat sebelumnya</strong>
+        tanpa perlu menghapus template lama.
+    </p>
+
+    <h3>> Format Command</h3>
+    <pre><code>!changeproses &lt;text&gt;</code></pre>
+
+    <h3>> Contoh Penggunaan</h3>
+    <pre><code>!changeproses
+Pesanan: @pesanan
+Dari: @nama
+Tanggal: @tanggal
+Jam: @jam</code></pre>
+
+    <h3>> Placeholder yang Tersedia</h3>
+    <ul>
+        <li><code>@tanggal</code> – Menampilkan tanggal saat ini</li>
+        <li><code>@jam</code> – Menampilkan jam saat ini</li>
+        <li><code>@nama</code> – Menandai pengguna yang dibalas</li>
+        <li><code>@pesanan</code> – Menampilkan ulang pesan yang dibalas</li>
+    </ul>
+
+    <div class="warning">
+        <strong>[WARNING]:</strong> Command <strong>!changeproses</strong> hanya dapat digunakan
+        jika template PROSES sudah dibuat terlebih dahulu
+        menggunakan command <code>!setproses</code>.
+    </div>
+
+    <h3>> Cara Kerja Bot</h3>
+    <ol>
+        <li>Bot mengecek apakah template PROSES tersedia</li>
+        <li>Jika tidak ada, bot menolak perintah</li>
+        <li>Jika ada, template lama diganti dengan template baru</li>
+        <li>Template PROSES baru langsung aktif</li>
+    </ol>
+
+    <!-- ================= DELSETPROSES ================= -->
+    <h2>// Command <code>!delsetproses</code></h2>
+
+    <p>
+        Command <strong>!delsetproses</strong> digunakan untuk
+        <strong>menghapus template PROSES custom</strong> dan
+        <strong>mengembalikan pesan PROSES ke format default bot</strong>.
+    </p>
+
+    <h3>> Format Command</h3>
+    <pre><code>!delsetproses</code></pre>
+
+    <h3>> Cara Kerja Bot</h3>
+    <ol>
+        <li>Bot menghapus template PROSES dari database</li>
+        <li>Bot mengembalikan format PROSES ke default</li>
+        <li>Template custom tidak lagi digunakan</li>
+    </ol>
+
+    <div class="note">
+        <strong>[INFO]:</strong> Setelah menggunakan <code>!delsetproses</code>, kamu dapat
+        menggunakan <code>!setproses</code> kembali jika ingin
+        membuat template baru.
+    </div>
+
+    <footer>
+        &copy; 2026 WHOWHYBOT | Pengembang XSTBOT
+    </footer>
+</div>
+
+</body>
+</html>

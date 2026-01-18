@@ -1,0 +1,57 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://cloudku.sbs",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/gambar/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/addsewa",
+      "destination": "/addsewa.html"
+    },
+    {
+      "source": "/perpanjangsewa",
+      "destination": "/perpanjangsewa.html"
+    },
+    {
+      "source": "/addlist",
+      "destination": "/addlist.html"
+    },
+    {
+      "source": "/dellist",
+      "destination": "/dellist.html"
+    },
+    {
+      "source": "/setdone_changedone",
+      "destination": "/setdone_changedone.html"
+    },
+    {
+      "source": "/setlistview",
+      "destination": "/setlistview.html"
+    },
+    {
+      "source": "/setproses_changeproses",
+      "destination": "/setproses_changeproses.html"
+    },
+    {
+      "source": "/updatelist",
+      "destination": "/updatelist.html"
+    }
+  ]
+}

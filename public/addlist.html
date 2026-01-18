@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>WHOWHYBOT - Panduan Addlist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette Warna Code Editor (Inspired by One Dark / Dracula) */
+            --bg-body: #1e1e1e;
+            --bg-container: #252526;
+            --text-main: #d4d4d4;
+            --accent-blue: #61afef;
+            --accent-purple: #c678dd;
+            --accent-green: #98c379;
+            --accent-orange: #d19a66;
+            --accent-red: #e06c75;
+            --border-color: #3e3e42;
+            --code-bg: #101010;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Consolas', monospace; /* Font koding */
+            background-color: var(--bg-body);
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px; /* Efek Grid */
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: #007acc; /* Warna status bar VS Code */
+            padding: 12px 0;
+            text-align: center;
+            border-bottom: 2px solid #005a9e;
+            position: relative;
+        }
+        
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        
+        header::before {
+            content: "root@server:~#"; /* Aksen terminal */
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            font-size: 0.8em;
+            opacity: 0.7;
+            display: none; /* Hidden on mobile */
+        }
+        @media(min-width: 768px) { header::before { display: block; } }
+
+        /* ===== CONTENT ===== */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--bg-container);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* Hiasan titik window mac os */
+        .container::before {
+            content: "● ● ●";
+            color: #5c5c5c;
+            font-size: 14px;
+            letter-spacing: 4px;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+        }
+
+        h1 {
+            color: var(--accent-blue);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 10px;
+            font-size: 1.8em;
+        }
+        
+        h2 {
+            color: var(--accent-purple);
+            margin-top: 30px;
+            font-size: 1.4em;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #abb2bf;
+        }
+
+        /* Code Styling */
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-orange);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border-left: 3px solid var(--accent-blue);
+            color: #e5e5e5;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        pre code {
+            background: transparent;
+            color: inherit;
+            border: none;
+            padding: 0;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            color: #abb2bf;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        strong {
+            color: #ffffff;
+        }
+
+        /* Image Box */
+        .img-box {
+            margin: 30px 0;
+            text-align: center;
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .img-box img {
+            max-width: 100%;
+            border-radius: 4px;
+            border: 1px solid #444;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        
+        .img-box img:hover {
+            opacity: 1;
+        }
+        
+        .img-box p {
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Alerts */
+        .note {
+            background: rgba(97, 175, 239, 0.1); /* Blue transparent */
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+            color: #dcdcdc;
+        }
+        
+        .warning {
+            background: rgba(224, 108, 117, 0.1); /* Red transparent */
+            border-left: 4px solid var(--accent-red);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+            color: #ffcccc;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.85em;
+            color: #5c6370;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        /* Selection color */
+        ::selection {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/">WHOWHYBOT_</a>
+</header>
+
+<div class="container">
+    <h1>Panduan Penggunaan Command <code>.addlist</code></h1>
+
+    <p>
+        Command <strong>.addlist</strong> digunakan untuk menginjeksi daftar produk atau menu
+        ke dalam database grup. List ini nantinya akan dirender saat command
+        <code>.list</code> dieksekusi.
+    </p>
+
+    <h2>// Format Command Addlist</h2>
+    <pre><code>.addlist &lt;key&gt;@&lt;deskripsi&gt;</code></pre>
+
+    <h3>> Parameter Config</h3>
+    <ul>
+        <li><strong>&lt;key&gt;</strong> : String nama produk (tanpa spasi).</li>
+        <li><strong>&lt;deskripsi&gt;</strong> : String deskripsi produk atau value harga.</li>
+    </ul>
+
+    <div class="warning">
+        <strong>[WARNING]:</strong> Syntax Error akan terjadi jika ada spasi (whitespace) sebelum atau sesudah simbol <strong>@</strong>.
+    </div>
+
+    <h3>> Contoh Syntax Error (Salah)</h3>
+    <pre><code>.addlist abc @Tulis daftar harga</code></pre>
+    <pre><code>.addlist abc@ Tulis daftar harga</code></pre>
+
+    <div class="img-box">
+        <img src="/gambar/addlist/addlist1.jpg" alt="Format addlist salah">
+        <p><em>// Error Log: Format addlist invalid</em></p>
+    </div>
+
+    <h3>> Contoh Syntax Valid (Benar)</h3>
+    <pre><code>.addlist abc@Tulis daftar harga kalian</code></pre>
+
+    <div class="img-box">
+        <img src="/gambar/addlist/addlist2.jpg" alt="Addlist berhasil">
+        <p><em>// Success: Data berhasil disimpan ke database</em></p>
+    </div>
+
+    <h2>// Runtime Alur Bot</h2>
+    <ol>
+        <li>System mengecek command di dalam grup scope.</li>
+        <li>System memvalidasi format string <code>key@deskripsi</code>.</li>
+        <li>System parsing spasi di sekitar delimiter <code>@</code>.</li>
+        <li>System menyimpan object list ke database.</li>
+        <li>System mengembalikan callback sukses.</li>
+    </ol>
+
+    <div class="img-box">
+        <img src="/gambar/addlist/addlis3.jpg" alt="List menu group">
+        <p><em>// Output: Daftar produk muncul saat command <code>.list</code> dipanggil</em></p>
+    </div>
+
+    <h2>// Fetch Data List</h2>
+    <pre><code>.list</code></pre>
+
+    <p>
+        Bot akan me-return array produk yang telah ditambahkan.
+        Untuk melihat detail object, ketik nama key di chat stream.
+    </p>
+
+    <footer>
+        &copy; 2026 WHOWHYBOT | Pengembang XSTBOT
+    </footer>
+</div>
+
+</body>
+</html>
